@@ -1,0 +1,91 @@
+# Script
+
+## Introduction
+
+Bonjour à toute et à tous,
+Mon talk s’intitule un site web c’est comme Disneyland, mais pour tout avouer je ne suis jamais allé à Disneyland.
+Mais une chose qu’on m’a racontée, c’est que l’ambiance, les décors, la musique et les animations sont superbes a telle point qu’on a l’impression de moins voir le temps passer dans les files d’attente.
+Et c’est bien une impression dont je fais référence car les dizaines de minutes d’attentes, elles sont bien réelles et même si c’est peut-être la magie de Disney qui donne cette impression mais derrière ça ce sont des mécanismes bien construits.
+Et ces mécanismes ils ont été étudiés car ils ont un impact non négligeable. 
+
+## Etudes
+
+Par exemple, une étude de google a montré que lorsque votre site charge pour la première fois sur mobile, la probabilité qu’un utilisateur parte augmente de 32% lorsque le chargement de la page passe de 1 seconde à 3 secondes et si elle passe finalement de 1 seconde à 5 secondes, la probabilité que l’utilisateur parte augmente de 90% ! [1]
+Un autre exemple, il a été montré que lorsqu’un utilisateur effectue une tâche et qu’il doit attendre, il existe un seuil de 10 secondes au-delà de laquelle l’utilisateur ne se concentre plus efficacement sur sa tâche [2] et l’utilisateur considérera l’attente insatisfaisante [3].
+
+## Problématique
+
+C’est pourquoi aujourd’hui on va voir ensemble comment donner l'impression à l'utilisateur de moins attendre ?
+Par ce que même si l’internet est de plus en plus rapide, il existera toujours des limitations technologiques qui vont nous faire attendre.
+
+## Feedback
+
+Une chose qui est importante lorsqu’on va faire attendre nos utilisateurs, on va leur donner un feedback pour expliquer que quelques choses se passe. Par ce que quand si l’utilisateur lance une action et qu’il n’a pas de feedback, l’utilisateur pourrait croire que le processus ne marche pas ou n’a pas été lancé.
+Ce feedback il peut prendre pleines formes mais va être très souvent visuel ou textuel comme des barres de progressions.
+
+## Etude
+
+### Différents feedbacks
+
+Et pour explorer différents feedbacks dans une étude de Guillaume Gronier and Carine Lallemand [4], ils vont expérimenter plusieurs barres de progression et plusieurs éléments et regarder la satisfaction et le temps perçu par l’utilisateur lorsque l’utilisateur attend. Et malgré le même temps d’attente de 12 secondes, ils vont démontrer que la durée perçue reflète du subjectif qui peut être déformé.
+Je vous donne maintenant la confirmation qu’afficher une page vide pour faire attendre c’est une mauvaise idée, les utilisateurs ne sont pas contents et le temps perçus il est plus long que le réel.
+Et en fait, il n’y a pas qu’une page vide qui va allonger le temps perçus ; les petites barres de progression, les horloges et les timers, ça va allonger le temps perçus également de 15 à 30%.
+Seul le compte à rebours ne déforme pas à la réalité mais ce n’est pas trop ce qui nous intéresse. Nous ce qui nous intéresse c’est ce qui déforme positivement la réalité pour l’utilisateur comme le texte, les multiples barres de progression et la barre de progression longue.
+Et ces exemples, vous les avez sûrement déjà croisés, si vous avez déjà jouez à des jeux vidéo, lors des chargements on affiche des petits textes en rapport avec l’histoire ou des astuces. [6]
+Pour les barres de progression successive, vous les avez sûrement croisés lorsque vous avez installez des logiciels.
+
+### La non-linéarité
+
+Quant à la barre de progression longue, Guillaume et Carine dans la même étude [4] ils sont allés plus loin et ont regardé si comment évoluais la barre de progression avait une différence sur l’appréciation des utilisateurs.
+Ils ont montré que les barres de progression « slow-down » sont significativement la plus appréciée par les utilisateurs. Et de manière générale, Steven Seow dans son livre Designing & Engineering Time supporte confirme l’utilisation de progression non-linéarité car la progression va sembler rapide lorsque les utilisateurs vont vérifier périodiquement l'état d'avancement du processus.[6]
+Sauf que c’est bien une barre de progression mais la réalité des choses est que souvent sur le web on ne sait pas quantifier l’avancement et on ne sait pas en avance combien de temps cela va prendre. C’est pourquoi on a mis en place des loaders.
+Et des loaders il y en a de toutes les formes, des zens, des artistiques, des créatifs ou des plus abstraits.
+Mais attention à ne pas surcharger les utilisateurs d'informations pendant l'attente ou faire porter leur attention sur le temps qui passe, cela peut donner l'impression que l'attente est plus longue. [4].
+
+## Système réactif
+
+Et maintenant on en utilise beaucoup et partout. Et ce n’est pas une mauvaise chose tant que ça respecte quelques règles d’un système réactifs introduit par Jeff Johnson [5] dans son livre Designing with the Mind in Mind et les 2 règles qui me paraissaient les plus importantes sont :
+-	Fournir un retour d’information sur ce que l’utilisateur a fait et sur ce qui se passe (feedback)
+-	Permettre à l’utilisateur de faire autre chose pendant l’attente, on ne veut pas bloquer l’utilisateur
+
+## Les skeletons
+
+Et ne pas bloquer l’utilisateur et lui laisser la liberté de naviguer, c’est une chose qui peut être réalise avec des skeletons.
+Les skeletons de l’anglais squelette c’est le fait d’afficher le squelette du site en détaillant plus ou moins les blocks qui sont présents dans le site.
+Cet affichage va donner une impression de progression et que le résultat va bientôt apparaître.
+
+## Les parcours utilisateurs
+
+Un autre stratagème pour faire réduire l’impression d’attente c’est tout simplement en réduisant le temps d’attente en étant malin et maline dans les parcours utilisateur. Et je vais vous parler de 2 techniques issues du livre Designing & Engineering Time par Steven Seow.
+
+### The preemptive start
+
+The Preemptive start ou départ anticipé en français : Certaines fois, ce n'est pas nécessaire d'attendre que l'utilisateur fournisse toutes les données avant de poursuivre un processus. Dans la mesure du possible, il faudrait lancer le processus au plus tôt en ne pas attendre que toutes les données soient fournies. [6]
+Par exemple lorsqu’on publie une photo Instagram, dans un premier temps, on sélectionne la photo à publier puis vient à la rédaction de la description et ajour d’un lieu par exemple. Instagram n’est obligé d’attendre la fin de votre rédaction description pour envoyer la photo.
+
+### The early completion
+
+The Early completion ou l'achèvement anticipé : Tout comme vous pouvez lancer un événement de manière préemptive, vous pouvez "terminer" prématurément un événement en exécutant certains processus en arrière-plan tout en donnant aux utilisateurs l'impression que l'ensemble du processus s'est achevé. [6]
+Par exemple la fonction d’aimer un post sur twitter, vous avez directement un feedback du site lorsque vous aimez un post alors que la réponse de l’api n’a pas encore été reçue. Toutefois il faudrait être user de cette technique avec parcimonie car si l’action est refusée par l’api ou il n’y a pas de réponse du tout, on doit indiquer à l’utilisateur que l’action n’a finalement pas été réalisée ou autrement faire comme sur Twitter net e pas avertir l’utilisateur du problème.
+
+## Émotions des utilisateurs
+
+J’aimerai finalement revenir sur quelque chose, comme évoqué auparavant la durée perçue reflète du subjectif, qui est susceptible d'être plus ou moins déformé.[6] Et les émotions des utilisateurs peuvent être un outil puissant pour déformer la perception.
+Par exemple il est possible de rassurer l’utilisateur et augmenter la tolérance de l’utilisateur sur la faite d’attendre en indiquant que l’attente en valait la peine. [6]
+Autre exemple lorsque que vous estimez et indiquez la durée d'un processus, estimez-la légèrement supérieure à la durée réelle. Lorsque le processus s'achève plus tôt que prévu, cette avance est accueillie comme un "bonus". Alors qu’à l’inverse si vous avez sous-estimé, l’utilisateur sera assez déçu et pourrait quitter le processus. [6]
+Finalement, certains chercheurs ont suggéré que plus les gens réussissent sur un site, plus ils pensent qu'il est rapide, même si leurs évaluations ne sont pas en corrélation avec la vitesse réelle des sites [7], alors ce que je vous conseils c’est de faire des sites où l’utilisateur réussit et ils seront contents
+
+## Conclusion et fin
+
+Voilà, moi c’était Emma QUINIO, je suis développeuse frontend chez onepoint et je vous remercie de votre écoute.
+Je vous laisse scanner les 2 petits QR-Code si vous voulez me donner un feedback pour ma première conférence ou si vous voulez retrouver mes diapos, sources et script.
+ 
+# Source
+
+- [1] : https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/
+- [2] : Bouch, A., Kuchinsky, A., and Bhatti, N. Quality is in the eye of the beholder: meeting users’ requirements for Internet quality of service. Proceedings of the SIGCHI conference on Human factors in computing systems, ACM (2000), 297– 304.
+- [3] : Nielsen, J. Usability Engineering. Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1993.
+- [4] : How to Improve Perceived WaitingTime in HCI: A Psychological Approach by Guillaume Gronier and Carine Lallemand
+- [5] : Designing with the Mind in Mind by Jeff Johnson
+- [6] : Designing & Engineering Time : The Psychology of Time Perception in Software by Steven C. Seow, PhD
+- [7] : Perfetti, Christine. The truth about download time. Web article, Centre Centre, Feb 14, 2006, https://articles.centercentre.com/download_time/
